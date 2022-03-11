@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Error from '../../components/error/Error';
 import Header from '../../components/header/Header';
-import List from '../../components/list.js/List';
+import List from '../../components/list/List';
 import Navigation from '../../components/navigation/Navigation';
 import FotbalServices from '../../services/FotbalServices';
 import PlayerCard from './../../components/playerCard/PlayerCard';
@@ -37,7 +37,7 @@ const StartPage = () => {
     <Spinner />
   </div> : null;
 
-  const content = !loading && !error ? <List><PlayerCard topPlayers={data} /></List> : null
+  const content = !loading && !error ? <List><PlayerCard players={data} /></List> : null
 
   return (
     <>

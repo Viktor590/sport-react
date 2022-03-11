@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import './playerCard.scss';
 
 const PlayerCard = (props) => {
-
+  console.log(props);
   function View(arr) {
-    if (arr.topPlayers === undefined) return
+    if (arr.players === undefined || arr.players.length < 1) return
     const res = arr.topPlayers.map((item) => {
       return (
         <li
@@ -26,6 +26,7 @@ const PlayerCard = (props) => {
 
   return (
     <>
+      {/* <div></div> */}
       {View(props)}
     </>
 
