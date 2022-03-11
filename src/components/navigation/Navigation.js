@@ -3,7 +3,7 @@ import './navigation.scss';
 
 const Navigation = () => {
   return (
-    <nav className='navigation'>
+    <div className='navigation'>
       <ul className='navigation__list'>
         <li className='navigation__item'>
           <a className='navigation__item-link' href="#">
@@ -16,7 +16,7 @@ const Navigation = () => {
           </a>
         </li>
       </ul>
-    </nav>
+    </div>
   )
 }
 export default Navigation;

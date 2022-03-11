@@ -1,0 +1,19 @@
+.search {
+  background: #fff;
+  border: 0.5px solid #D1D1D1;
+  border-radius: 4px;
+  padding: 8px 15px;
+  outline: inherit;
+
+  &__button {
+    border: none;
+    padding: 8px 15px;
+    background: inherit;
+    transform: translateX(-40px);
+    cursor: pointer;
+  }
+}
+
+.form {
+  margin: 32px 0;
+}

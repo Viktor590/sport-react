@@ -1,4 +1,4 @@
-import Navigation from '../navigation/Navigation';
+import Content from '../content/Content';
 import Header from '../header/Header';
 import './App.scss';
 
@@ -7,8 +7,9 @@ function App() {
     <div className="App">
       <main>
         <Header />
-        <Navigation />
+        <Content />
       </main>
+
     </div>
   );
 }
