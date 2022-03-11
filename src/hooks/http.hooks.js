@@ -10,7 +10,6 @@ export const useHttp = () => {
   }) => {
 
     setLoading(true);
-
     try {
       const response = await fetch(url, { method, headers });
 

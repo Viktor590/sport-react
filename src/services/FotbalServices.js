@@ -7,10 +7,19 @@ const FotbalServices = () => {
 
   const getTopScoresPlayer = async () => {
     const res = await request(`${GETBASE}/players/topscorers?season=2020&league=61`)
-      .then(re => console.log(re))
-    return res
+    return res.response.map(_playerTopTransform)
   }
 
-  return { getTopScoresPlayer }
+  const _playerTopTransform = (arr) => {
+    return {
+      id: arr.player.id,
+      name: arr.player.name,
+      photo: arr.player.photo,
+      age: arr.player.age,
+      nationality: arr.player.nationality
+    }
+  }
+
+  return { getTopScoresPlayer, loading, error }
 }
 export default FotbalServices;

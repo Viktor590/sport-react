@@ -4,7 +4,7 @@ import './list.scss';
 const List = (props) => {
   return (
     <ul className='list'>
-      {props.content}
+      {props.children}
     </ul>
   )
 }
