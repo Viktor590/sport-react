@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './navigation.scss';
 
 const Navigation = () => {
@@ -6,14 +7,14 @@ const Navigation = () => {
     <div className='navigation'>
       <ul className='navigation__list'>
         <li className='navigation__item'>
-          <a className='navigation__item-link' href="#">
-            Football
-          </a>
+          <NavLink to="/team" className='navigation__item-link'>
+            Teams
+          </NavLink>
         </li>
         <li className='navigation__item'>
-          <a className='navigation__item-link' href="#">
-            Football
-          </a>
+          <NavLink to="/player" className='navigation__item-link'>
+            Players
+          </NavLink>
         </li>
       </ul>
     </div>

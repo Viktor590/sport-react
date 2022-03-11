@@ -1,5 +1,6 @@
 .navigation {
   width: 200px;
+  height: calc(100% - 100px);
   background: #fff;
 
   &__list {
@@ -19,6 +20,8 @@
       font-size: 20px;
       color: #000;
       transition: all .3s;
+      padding: 10px 80px 10px 10px;
+      // padding-right: 80px;
     }
 
     &:hover {

@@ -1,11 +1,13 @@
-.teamCard {
+.playerCard {
   max-width: 250px;
+  // height: 300px;
   background: linear-gradient(121.57deg, #707070 1.62%, #393939 81.02%);
   border-radius: 5px;
 
   &__img {
     margin: 0 auto;
     transform: translateY(15px);
+    border-radius: 4px;
   }
 
   &__content {
@@ -25,7 +27,7 @@
       color: #FFFFFF;
     }
 
-    &-dscr {
+    &-age {
       font-size: 14px;
       line-height: 24px;
       font-weight: 500;
