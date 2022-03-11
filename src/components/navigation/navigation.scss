@@ -1,0 +1,33 @@
+.navigation {
+  width: 200px;
+  height: 100vh;
+  background: #fff;
+
+  &__list {
+    margin-top: 40px;
+    height: 100%;
+  }
+
+  &__item {
+    padding: 5px 10px;
+    margin-bottom: 15px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .3s;
+
+    &-link {
+      font-size: 20px;
+      color: #000;
+      transition: all .3s;
+    }
+
+    &:hover {
+      background: #FF5761;
+
+      .navigation__item-link {
+        color: #fff;
+      }
+    }
+  }
+}
