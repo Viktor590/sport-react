@@ -2,10 +2,10 @@ import React from 'react';
 import Search from '../search/Search';
 import Navigation from '../navigation/Navigation';
 import Header from '../header/Header';
-import PlayerCard from '../playerCard/PlayerCard';
-import './playerList.scss';
+import List from '../list.js/List';
+import './contentList.scss';
 
-const PlayerList = () => {
+const ContentList = (props) => {
   return (
     <>
       <Header />
@@ -13,12 +13,10 @@ const PlayerList = () => {
         <Navigation />
         <div className="content__wrapper">
           <Search />
-          <ul className='content__list'>
-            <PlayerCard />
-          </ul>
+          <List content={props.content} />
         </div>
       </div>
     </>
   )
 }
-export default PlayerList;
+export default ContentList;

@@ -5,18 +5,18 @@ import './navigation.scss';
 const Navigation = () => {
   return (
     <div className='navigation'>
-      <ul className='navigation__list'>
-        <li className='navigation__item'>
-          <NavLink to="/team" className='navigation__item-link'>
-            Teams
-          </NavLink>
-        </li>
-        <li className='navigation__item'>
-          <NavLink to="/player" className='navigation__item-link'>
-            Players
-          </NavLink>
-        </li>
-      </ul>
+      <NavLink
+        style={({ isActive }) => ({ background: isActive ? '#C60E2E' : 'inherit', color: isActive ? '#fff' : 'inherit' })}
+        to="/team"
+        className='navigation__link'>
+        Teams
+      </NavLink>
+      <NavLink
+        style={({ isActive }) => ({ background: isActive ? '#C60E2E' : 'inherit', color: isActive ? '#fff' : 'inherit' })}
+        to="/player"
+        className='navigation__link'>
+        Players
+      </NavLink>
     </div>
   )
 }

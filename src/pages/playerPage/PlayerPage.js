@@ -1,8 +1,11 @@
-import PlayerList from "../../components/playerList/PlayerList";
+import ContentList from "../../components/contentList/ContentList";
+import PlayerCard from './../../components/playerCard/PlayerCard';
+
+
 
 const PlayerPage = () => {
   return (
-    <PlayerList />
+    <ContentList content={<PlayerCard />} />
   )
 }
 export default PlayerPage;

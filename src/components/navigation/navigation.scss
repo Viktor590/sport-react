@@ -1,35 +1,21 @@
 .navigation {
   width: 200px;
-  height: calc(100% - 100px);
+  height: calc(100vh - 100px);
   background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
 
-  &__list {
-    padding: 40px 0 0 0;
-  }
-
-  &__item {
-    padding: 5px 10px;
+  &__link {
+    padding: 10px 10px;
     margin-bottom: 15px;
     border: 1px solid #000;
     border-radius: 10px;
-    cursor: pointer;
     transition: all .3s;
     max-width: 150px;
-
-    &-link {
-      font-size: 20px;
-      color: #000;
-      transition: all .3s;
-      padding: 10px 80px 10px 10px;
-      // padding-right: 80px;
-    }
-
-    &:hover {
-      background: #FF5761;
-
-      .navigation__item-link {
-        color: #fff;
-      }
-    }
+    font-size: 20px;
+    color: #000;
+    transition: all .3s;
   }
+
 }

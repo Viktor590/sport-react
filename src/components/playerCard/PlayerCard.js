@@ -5,7 +5,7 @@ const PlayerCard = () => {
   return (
     <li className='playerCard'>
       <a className='playerCard__link' href="#">
-        <img className='playerCard__img' src="https://media.api-sports.io/football/players/276.png" alt="" />
+        <img className='playerCard__img' src="https://media.api-sports.io/football/players/278.png" alt="" />
         <div className='playerCard__content'>
           <h2 className='playerCard__content-title'>Рудд</h2>
           <p className='playerCard__content-age'>fdsgf</p>

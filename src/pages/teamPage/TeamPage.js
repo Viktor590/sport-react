@@ -1,11 +1,13 @@
 import React from 'react';
-import TeamList from '../../components/teamList/TeamList';
+import ContentList from '../../components/contentList/ContentList';
+import TeamCard from '../../components/teamCard/TeamCard';
+
 
 
 
 const TeamPage = () => {
   return (
-    <TeamList />
+    <ContentList content={<TeamCard />} />
   )
 }
 export default TeamPage;
