@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './playerCard.scss';
 
 const PlayerCard = (props) => {
-  console.log(props);
+  // console.log(props);
   function View(arr) {
     if (arr.players === undefined) return
     const res = arr.players.map((item) => {
