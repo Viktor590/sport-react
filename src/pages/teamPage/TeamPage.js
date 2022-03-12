@@ -6,6 +6,7 @@ import Header from '../../components/header/Header';
 import Navigation from '../../components/navigation/Navigation';
 import List from '../../components/list/List';
 import Spinner from '../../components/spinner/Spinner';
+import Error from '../../components/error/Error';
 
 
 
@@ -15,17 +16,17 @@ const TeamPage = (props) => {
   const [inputValue, setInputValue] = useState('');
   const [data, setData] = useState([])
 
-  const { getSearchTeam, loading } = FotbalServices();
+  const { getSearchTeam, loading, error } = FotbalServices();
 
   useEffect(() => {
-    onRequest(inputValue)
+    onRequestTeam(inputValue)
   }, [inputValue])
 
   const addTeam = (value) => {
     setInputValue(value);
   }
 
-  const onRequest = (value) => {
+  const onRequestTeam = (value) => {
     getSearchTeam(value)
       .then(onTeamLoaded)
   }
@@ -33,10 +34,18 @@ const TeamPage = (props) => {
     setData(arr)
   }
 
-  const content = !loading ?
+  const err = error ? <Error /> : null;
+
+  const spiner = loading ? <div
+    className='spin'
+    style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <Spinner />
+  </div> : null;
+
+  const content = !loading && !error ?
     <List>
       <TeamCard team={data} />
-    </List> : <Spinner />
+    </List> : null;
 
 
   return (
@@ -46,8 +55,8 @@ const TeamPage = (props) => {
         <Navigation />
         <div className="content__wrapper">
           <Search onAdd={addTeam} />
-          {/* {err}
-          {spiner} */}
+          {err}
+          {spiner}
           {content}
         </div>
       </div>

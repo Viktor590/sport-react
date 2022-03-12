@@ -4,7 +4,7 @@ import Header from '../../components/header/Header';
 import List from '../../components/list/List';
 import Navigation from '../../components/navigation/Navigation';
 import FotbalServices from '../../services/FotbalServices';
-import PlayerCard from './../../components/playerCard/PlayerCard';
+import PlayerCard from '../../components/playerCard/PlayerCard';
 import Spinner from './../../components/spinner/Spinner';
 
 

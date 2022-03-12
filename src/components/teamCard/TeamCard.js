@@ -9,7 +9,9 @@ const TeamCard = (props) => {
 
     const res = arr.team.map((item) => {
       return (
-        <li className='teamCard'>
+        <li
+          key={item.id}
+          className='teamCard'>
           <Link to="" className='teamCard__link'>
             <img className='teamCard__img' src={item.photo} alt={item.name} />
             <div className='teamCard__content'>
