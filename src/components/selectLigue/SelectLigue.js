@@ -3,8 +3,8 @@ import './selectLigue.scss';
 
 const SelectLigue = (props) => {
 
-  const [selectOne, setSelectOne] = useState('')
-  const [selectTwo, setSelectTwo] = useState('')
+  const [selectOne, setSelectOne] = useState(2)
+  const [selectTwo, setSelectTwo] = useState(2)
 
   const onSend = (e) => {
     e.preventDefault();
@@ -12,55 +12,60 @@ const SelectLigue = (props) => {
     props.onSelectSeason(selectTwo)
   }
 
-  // console.log(selectOne, selectTwo);
   // console.log(props.countries, props.season);
 
-  // const selectLigue = (arr) => {
-  //   if (arr === undefined) return
-  //   const res = arr.map((item) => {
-  //     <option value={item.name}>{props.name}</option>
-  //   })
-  //   return res
-  // }
+  const selectLigue = (arr) => {
+    if (arr === undefined || arr.length < 1) return
+    const res = arr.map((item) => {
+      return (
+        <option
+          key={item.id}
+          value={item.id}>{item.name}
+        </option>
+      )
+    })
+    return res
+  }
 
-  // const selectSeason = (arr) => {
-  //   if (arr === undefined) return
-  //   const res = arr.countries.map((item) => {
-  //     <option
-  //       value={item.code}>
-  //       {item.name}
-  //       {item.flag}
-  //     </option>
-  //   })
-  //   return res
-  // }
+  const selectSeason = (arr) => {
+    if (arr === undefined || arr.length < 1) return
+    const res = arr.map((item) => {
+      return (
+        <option
+          key={item}
+          value={item}>
+          {item}
+        </option>
+      )
+    })
+    return res
+  }
 
 
   return (
-    <form onSubmit={onSend}>
-      <label htmlFor="ligue">Select Ligue</label>
+    <form className='selectLigue' onSubmit={onSend}>
+      <label
+        className='selectLigue__label'
+        htmlFor="ligue">Select Ligue
+      </label>
+
       <select
+        className='selectLigue__select'
         onChange={(e) => setSelectOne(e.target.value)}
         name="ligue">
-        <option value='19'>19</option>
-        <option value='62'>62</option>
-        <option value='65'>65</option>
-
-        {/* {selectLigue(props.countries)} */}
-
+        {selectLigue(props.countries)}
       </select>
       <label
-        htmlFor="season">Select Season</label>
-
+        className='selectLigue__label'
+        htmlFor="season">Select Season
+      </label>
       <select
+        className='selectLigue__select'
         onChange={(e) => setSelectTwo(e.target.value)}
         name="season">
-        <option value='10'>10</option>
-        <option value='2018'>2018</option>
-        <option value='2017'>2017</option>
-        {/* {selectSeason(props.season)} */}
+        {selectSeason(props.season)}
       </select>
-      <button>Search</button>
+      <button className='selectLigue__button'>Search</button>
     </form>
   )
 }

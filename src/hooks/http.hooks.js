@@ -6,7 +6,7 @@ export const useHttp = () => {
 
   const request = useCallback(async (url, method = 'GET', headers = {
     "x-rapidapi-host": "v3.football.api-sports.io",
-    "x-rapidapi-key": "2693197234c6659808cffb41908bb0d3"
+    "x-rapidapi-key": "53443b7e028c1030650b9ba82fcf33b2"
   }) => {
 
     setLoading(true);

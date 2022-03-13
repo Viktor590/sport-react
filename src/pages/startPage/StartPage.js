@@ -8,63 +8,51 @@ import PlayerCard from '../../components/playerCard/PlayerCard';
 import Spinner from './../../components/spinner/Spinner';
 import SelectLigue from '../../components/selectLigue/SelectLigue';
 
-
-
-
 const StartPage = () => {
-  const { getTopScoresPlayer, getAllCountries, getAllSeasons, getTopSelect, loading, error } = FotbalServices();
+  const {
+    getTopScoresPlayer,
+    getAllCountries,
+    getAllSeasons,
+    loading,
+    error } = FotbalServices();
 
   const [data, setData] = useState([]);
-  const [countriesData, setCountriesData] = useState([1, 2])
-  const [seasonsData, setSeasonsData] = useState([1, 2])
-  const [selectLiga, setSelectLiga] = useState(null);
-  const [selectSeason, setSelectSeason] = useState(null);
+  const [countriesData, setCountriesData] = useState([])
+  const [seasonsData, setSeasonsData] = useState([])
+  const [selectLiga, setSelectLiga] = useState(61);
+  const [selectSeason, setSelectSeason] = useState(2020);
 
 
   useEffect(() => {
-    onRequest();
-    console.log(data);
-  }, [])
-
-  // useEffect(() => {
-  //   onRequestSelect(selectLiga, selectSeason)
-  //   console.log(selectLiga);
-  //   console.log(selectSeason);
-  // }, [selectLiga])
+    console.log(selectLiga);
+    console.log(selectSeason);
+    onRequest(selectLiga, selectSeason);
+  }, [selectLiga, selectSeason])
 
 
-  // const onRequestSelect = (value, season) => {
-  //   getTopSelect(value, season)
-  //     .then(res => console.log(res))
-  // }
-
-  const onRequest = () => {
-    getTopScoresPlayer(selectLiga, selectSeason)
-      .then(onTopLoaded);
-
+  useEffect(() => {
     getAllCountries()
       .then(onCoutriesData);
 
     getAllSeasons()
       .then(onSeasonsData);
+  }, [])
 
+  const onRequest = (value, season) => {
+    getTopScoresPlayer(value, season)
+      .then(onTopLoaded);
   }
 
   const onTopLoaded = (arr) => {
     setData(arr)
   }
 
-  const onSelectLoaded = (arr) => {
-    setSelectLiga(arr)
-  }
-
-
   const onCoutriesData = (arr) => {
-    setCountriesData(1, 2, 3)
+    setCountriesData(arr)
   }
 
   const onSeasonsData = (arr) => {
-    setSeasonsData(1, 2, 3)
+    setSeasonsData(arr)
   }
 
   const addSelectLigue = (value) => {
@@ -78,7 +66,6 @@ const StartPage = () => {
   const err = error ? <Error /> : null;
 
   const spiner = loading ? <div
-    className='spin'
     style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
     <Spinner />
   </div> : null;

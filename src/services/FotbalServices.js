@@ -3,17 +3,17 @@ import { useHttp } from './../hooks/http.hooks';
 const FotbalServices = () => {
   const { loading, request, error, clearError } = useHttp();
 
-  const GETBASE = 'https://v3.football.api-sports.io';
+  const GETBASE = 'https://v3.ftball.api-sports.io';
 
-  const getTopScoresPlayer = async () => {
-    const res = await request(`${GETBASE}/players/topscorers?season=2020&league=61`)
-    return res.response.map(_playerTopTransform)
-  }
-
-  const getTopSelect = async (value, seasonValue) => {
+  const getTopScoresPlayer = async (value, seasonValue) => {
     const res = await request(`${GETBASE}/players/topscorers?season=${seasonValue}&league=${value}`)
     return res.response.map(_playerTopTransform)
   }
+
+  // const getTopSelect = async (value = , seasonValue) => {
+  //   const res = await request(`${GETBASE}/players/topscorers?season=${seasonValue}&league=${value}`)
+  //   return res.response.map(_playerTopTransform)
+  // }
 
   const getSearchTeam = async (value) => {
     const res = await request(`${GETBASE}/teams?name=${value}`);
@@ -26,7 +26,7 @@ const FotbalServices = () => {
   }
 
   const getAllCountries = async () => {
-    const res = await request(`${GETBASE}/countries`);
+    const res = await request(`${GETBASE}/leagues`);
     return res.response.map(_countriesAllTransform)
   }
 
@@ -58,13 +58,12 @@ const FotbalServices = () => {
 
   const _countriesAllTransform = (arr) => {
     return {
-      name: arr.name,
-      flag: arr.flag,
-      code: arr.code
+      id: arr.league.id,
+      name: arr.league.name,
     }
   }
 
 
-  return { getTopScoresPlayer, getSearchTeam, getAllCountries, getSearchPlayer, getAllSeasons, getTopSelect, loading, error }
+  return { getTopScoresPlayer, getSearchTeam, getAllCountries, getSearchPlayer, getAllSeasons, loading, error }
 }
 export default FotbalServices;
