@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-import { StartPage, TeamPage, PlayerPage, ErrorPage } from '../../pages';
+import { StartPage, TeamPage, PlayerPage, ErrorPage, SinglePlayerPage } from '../../pages';
 import './App.scss';
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
             <Route exact path="/" element={<StartPage />} />
             <Route exact path="/team" element={<TeamPage />} />
             <Route exact path="/player" element={<PlayerPage />} />
+            <Route exact path="/singlePlayer/:playerId" element={<SinglePlayerPage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </main>

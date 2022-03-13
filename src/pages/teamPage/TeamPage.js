@@ -36,16 +36,15 @@ const TeamPage = (props) => {
 
   const err = error ? <Error /> : null;
 
-  const spiner = loading ? <div
-    className='spin'
-    style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-    <Spinner />
-  </div> : null;
+  const spiner = loading ? <Spinner /> : null;
 
   const content = !loading && !error ?
-    <List>
-      <TeamCard team={data} />
-    </List> : null;
+    <>
+      <Search onAdd={addTeam} />
+      <List>
+        <TeamCard team={data} />
+      </List>
+    </> : null;
 
 
   return (
@@ -54,16 +53,13 @@ const TeamPage = (props) => {
       <div className='content'>
         <Navigation />
         <div className="content__wrapper">
-          <Search onAdd={addTeam} />
+
           {err}
           {spiner}
           {content}
         </div>
       </div>
     </>
-    // <ContentList content={<TeamCard team={data} />}>
-    //   <Search onAdd={addTeam} />
-    // </ContentList>
   )
 }
 export default TeamPage;

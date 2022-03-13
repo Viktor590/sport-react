@@ -65,12 +65,22 @@ const StartPage = () => {
 
   const err = error ? <Error /> : null;
 
-  const spiner = loading ? <div
-    style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-    <Spinner />
-  </div> : null;
+  const spiner = loading ? <Spinner /> : null;
 
-  const content = !loading && !error ? <List><PlayerCard players={data} /></List> : null
+  const content = !loading && !error ?
+    <>
+      <SelectLigue
+        onSelectLigue={addSelectLigue}
+        onSelectSeason={addSelectSeason}
+        countries={countriesData}
+        season={seasonsData}
+      />
+      <List>
+        <PlayerCard players={data} />
+      </List>
+    </> : null;
+
+
 
   return (
     <>
@@ -78,12 +88,6 @@ const StartPage = () => {
       <div className='content'>
         <Navigation />
         <div className="content__wrapper">
-          <SelectLigue
-            onSelectLigue={addSelectLigue}
-            onSelectSeason={addSelectSeason}
-            countries={countriesData}
-            season={seasonsData}
-          />
           {err}
           {spiner}
           {content}

@@ -37,16 +37,15 @@ const PlayerPage = () => {
 
   const err = error ? <Error /> : null;
 
-  const spiner = loading ? <div
-    className='spin'
-    style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-    <Spinner />
-  </div> : null;
+  const spiner = loading ? <Spinner /> : null;
 
   const content = !loading && !error ?
-    <List>
-      <PlayerCard players={data} />
-    </List> : null
+    <>
+      <Search onAdd={addPlayer} />
+      <List>
+        <PlayerCard players={data} />
+      </List>
+    </> : null
 
   return (
     <>
@@ -54,7 +53,6 @@ const PlayerPage = () => {
       <div className='content'>
         <Navigation />
         <div className="content__wrapper">
-          <Search onAdd={addPlayer} />
           {err}
           {spiner}
           {content}
@@ -63,10 +61,5 @@ const PlayerPage = () => {
     </>
   )
 
-  // return (
-  //   <ContentList content={<PlayerCard />}>
-  //     <Search />
-  //   </ContentList>
-  // )
 }
 export default PlayerPage;

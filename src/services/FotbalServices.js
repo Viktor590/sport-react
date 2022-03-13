@@ -10,14 +10,14 @@ const FotbalServices = () => {
     return res.response.map(_playerTopTransform)
   }
 
-  // const getTopSelect = async (value = , seasonValue) => {
-  //   const res = await request(`${GETBASE}/players/topscorers?season=${seasonValue}&league=${value}`)
-  //   return res.response.map(_playerTopTransform)
-  // }
-
   const getSearchTeam = async (value) => {
     const res = await request(`${GETBASE}/teams?name=${value}`);
     return res.response.map(_teamSearchTransform)
+  }
+
+  const getSinglePlayer = async (value) => {
+    const res = await request(`${GETBASE}/players?id=${value}&season=2020`)
+    return res.response.map(_singlePlayerTransform)
   }
 
   const getSearchPlayer = async (id) => {
@@ -42,7 +42,6 @@ const FotbalServices = () => {
       photo: arr.player.photo,
       age: arr.player.age,
       team: arr.statistics.map(el => el.team.name)
-      // nationality: arr.player.nationality
     }
   }
 
@@ -63,7 +62,20 @@ const FotbalServices = () => {
     }
   }
 
+  const _singlePlayerTransform = (arr) => {
+    return {
+      name: arr.player.name,
+      nationality: arr.player.nationality,
+      age: arr.player.age,
+      height: arr.player.height,
+      weight: arr.player.weight,
+      photo: arr.player.photo,
+      teamId: arr.statistics.map(el => el.team.id),
+      teamLogo: arr.statistics.map(el => el.team.logo),
+      position: arr.statistics.map(el => el.games.position)
+    }
+  }
 
-  return { getTopScoresPlayer, getSearchTeam, getAllCountries, getSearchPlayer, getAllSeasons, loading, error }
+  return { getTopScoresPlayer, getSearchTeam, getAllCountries, getSearchPlayer, getAllSeasons, getSinglePlayer, loading, error }
 }
 export default FotbalServices;
