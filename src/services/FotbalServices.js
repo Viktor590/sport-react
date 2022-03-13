@@ -11,7 +11,7 @@ const FotbalServices = () => {
   }
 
   const getSearchTeam = async (value) => {
-    const res = await request(`${GETBASE}/teams?name=${value}`);
+    const res = await request(`${GETBASE}/teams?search=${value}`);
     return res.response.map(_teamSearchTransform)
   }
 

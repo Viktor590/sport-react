@@ -3,12 +3,11 @@ import { Link } from 'react-router-dom';
 import './singlePlayer.scss';
 
 const SinglePlayer = (props) => {
-
+  console.log(props.player);
   const View = (props) => {
     const res = props.map((item) => {
-      // const { name, nationality, age, height, weight, photo, teamId, teamLogo, position } = props.player;
       return (
-        <>
+        <div className="singlePlayer">
           <div className="singlePlayer__img-wrapper" >
             <img
               className="singlePlayer__img"
@@ -46,16 +45,17 @@ const SinglePlayer = (props) => {
               </li>
             </ul>
           </div>
-        </>
+        </div>
       )
     })
     return res
   }
 
   return (
-    <div className="singlePlayer">
+
+    <>
       {View(props.player)}
-    </div>
+    </>
   )
 }
 export default SinglePlayer;
