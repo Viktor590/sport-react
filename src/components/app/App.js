@@ -8,11 +8,11 @@ function App() {
       <div className="App">
         <main>
           <Routes>
-            {/* <Route exact path="/" element={<StartPage />} />
+            <Route exact path="/" element={<StartPage />} />
             <Route exact path="/team" element={<TeamPage />} />
             <Route exact path="/player" element={<PlayerPage />} />
-            <Route exact path="/singlePlayer/:playerId" element={<SinglePlayerPage />} /> */}
-            <Route exact path="/" element={<SingleTeamPage />} />
+            <Route exact path="/singlePlayer/:playerId" element={<SinglePlayerPage />} />
+            <Route exact path="/singleTeam/:teamId" element={<SingleTeamPage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </main>

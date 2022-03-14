@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './singlePlayer.scss';
 
 const SinglePlayer = (props) => {
-  console.log(props.player);
+
   const View = (props) => {
     const res = props.map((item) => {
       return (

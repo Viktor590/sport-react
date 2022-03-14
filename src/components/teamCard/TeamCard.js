@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './teamCard.scss';
 
 const TeamCard = (props) => {
-  console.log(props.team);
+
   function View(arr) {
     if (arr.team === undefined || arr.team === [] || arr.team === "") return;
 

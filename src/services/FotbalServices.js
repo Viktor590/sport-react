@@ -3,7 +3,7 @@ import { useHttp } from './../hooks/http.hooks';
 const FotbalServices = () => {
   const { loading, request, error, clearError } = useHttp();
 
-  const GETBASE = 'https://v3.ftball.api-sports.io';
+  const GETBASE = 'https://v3.football.api-sports.io';
 
   const getTopScoresPlayer = async (value, seasonValue) => {
     const res = await request(`${GETBASE}/players/topscorers?season=${seasonValue}&league=${value}`)
@@ -18,6 +18,16 @@ const FotbalServices = () => {
   const getSinglePlayer = async (value) => {
     const res = await request(`${GETBASE}/players?id=${value}&season=2020`)
     return res.response.map(_singlePlayerTransform)
+  }
+
+  const getSingleTeam = async (value) => {
+    const res = await request(`${GETBASE}/teams?id=${value}`)
+    return res.response.map(_singleTeamTransform)
+  }
+
+  const getSingleTeamSquads = async (value) => {
+    const res = await request(`${GETBASE}/players/squads?team=${value}`)
+    return res.response.map(_singleTeamSquadsTransform)
   }
 
   const getSearchPlayer = async (id) => {
@@ -41,7 +51,9 @@ const FotbalServices = () => {
       name: arr.player.name,
       photo: arr.player.photo,
       age: arr.player.age,
-      team: arr.statistics.map(el => el.team.name)
+      team: arr.statistics.map(el => {
+        return el.team.name
+      })
     }
   }
 
@@ -70,12 +82,64 @@ const FotbalServices = () => {
       height: arr.player.height,
       weight: arr.player.weight,
       photo: arr.player.photo,
-      teamId: arr.statistics.map(el => el.team.id),
-      teamLogo: arr.statistics.map(el => el.team.logo),
-      position: arr.statistics.map(el => el.games.position)
+      teamId: arr.statistics.map(el => {
+        return el.team.id
+      }),
+      teamLogo: arr.statistics.map(el => {
+        return el.team.logo
+      }),
+      position: arr.statistics.map(el => {
+        return el.games.position
+      })
     }
   }
 
-  return { getTopScoresPlayer, getSearchTeam, getAllCountries, getSearchPlayer, getAllSeasons, getSinglePlayer, loading, error }
+  const _singleTeamTransform = (arr) => {
+    return {
+      id: arr.team.id,
+      name: arr.team.name,
+      country: arr.team.country,
+      founded: arr.team.founded,
+      capacity: arr.venue.capacity,
+      stadium: arr.venue.name,
+      logo: arr.team.logo
+    }
+  }
+
+  const _singleTeamSquadsTransform = (arr) => {
+    return (
+      arr.players.map((item) => {
+        const { id, name, age, number, position, photo } = item
+        return {
+          id, name, age, number, position, photo
+        }
+
+
+      })
+      // arr.players.map((item) => {
+      //   return {
+      //     id: item.id,
+      //     name: item.name,
+      //     age: item.age,
+      //     number: item.number,
+      //     position: item.position,
+      //     photo: item.photo
+      //   }
+      // })
+    )
+  }
+
+  return {
+    getTopScoresPlayer,
+    getSearchTeam,
+    getAllCountries,
+    getSearchPlayer,
+    getAllSeasons,
+    getSingleTeamSquads,
+    getSingleTeam,
+    getSinglePlayer,
+    loading,
+    error
+  }
 }
 export default FotbalServices;
