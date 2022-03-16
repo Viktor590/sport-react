@@ -74,16 +74,52 @@ const SingleTeam = (props) => {
     return res
   }
 
+  const ViewCoach = (props) => {
+    if (props === undefined) return
+    const res = props.map((item) => {
+      return (
+        <>
+          <li
+            key={item.id}
+            className="singleTeam__bottom-list">
+            <div className="singleTeam__bottom-list__left">
+              <div className="singleTeam__player-img__wrapper">
+                <img className="singleTeam__player-img" src={item.photo} alt={item.firstName} />
+                <h4 className="singleTeam__img-title">{item.firstName} {item.lastname}</h4>
+              </div>
+            </div>
+            <div className="singleTeam__list-right">
+              <h4 className="singleTeam__bottom-list__dscr">Coach</h4>
+              <h4 className="singleTeam__bottom-list__dscr">{item.age}</h4>
+            </div>
+          </li>
 
+        </>
+      )
+    })
+    return res
+  }
+
+
+
+  const standingsId = (props) => {
+    if (props === undefined) return
+    const res = props.map((item) => {
+      return (
+        item.id
+      )
+    })
+    return res
+  }
+
+  console.log(standingsId(props.leagues));
 
 
   return (
     <div className="singleTeam">
-      <>
-        {ViewTop(props.team)}
-      </>
+      {ViewTop(props.team)}
+      <Link to={`/standings/${standingsId(props.leagues)}`} className="singleTeam__standings">Standings</Link>
       <div className="singleTeam__bottom">
-
         <h3 className="singleTeam__bottom-title">
           Roster
         </h3>
@@ -98,9 +134,8 @@ const SingleTeam = (props) => {
               <h4 className="singleTeam__bottom-list__dscr">Age</h4>
             </div>
           </li>
-          <>
-            {ViewRoster(props.roster)}
-          </>
+          {ViewCoach(props.coach)}
+          {ViewRoster(props.roster)}
         </ul>
 
       </div>

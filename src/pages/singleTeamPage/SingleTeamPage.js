@@ -11,10 +11,12 @@ const SingleTeamPage = () => {
 
   const { teamId } = useParams();
 
-  const { error, loading, getSingleTeamSquads, getSingleTeam } = FotbalServices();
+  const { error, loading, getSingleTeamSquads, getSingleTeam, getCoach, getCurrentLeague } = FotbalServices();
 
   const [dataTeam, setDataTeam] = useState();
   const [dataSquads, setDataSquads] = useState();
+  const [dataCoach, setDataCoach] = useState();
+  const [dataLeague, setDataLeague] = useState();
 
   useEffect(() => {
     getSingleTeamSquads(teamId)
@@ -22,6 +24,13 @@ const SingleTeamPage = () => {
 
     getSingleTeam(teamId)
       .then(onTeamLoaded)
+
+    getCoach(teamId)
+      .then(onCoachLoading)
+
+    getCurrentLeague(teamId)
+      .then(onCurrentLeaguesLoaded)
+
   }, [teamId])
 
   const onSquadsLoaded = (arr) => {
@@ -32,10 +41,20 @@ const SingleTeamPage = () => {
     setDataTeam(arr)
   }
 
+  const onCoachLoading = (arr) => {
+    setDataCoach(arr)
+  }
+
+  const onCurrentLeaguesLoaded = (arr) => {
+    setDataLeague(arr)
+  }
+
   const err = error ? <Error /> : null;
   const spinner = loading ? <Spinner /> : null;
   const content = !loading && !error ?
     <SingleTeam
+      leagues={dataLeague}
+      coach={dataCoach}
       team={dataTeam}
       roster={dataSquads} /> : null;
 

@@ -1,7 +1,7 @@
 import { useHttp } from './../hooks/http.hooks';
 
 const FotbalServices = () => {
-  const { loading, request, error, clearError } = useHttp();
+  const { loading, request, error } = useHttp();
 
   const GETBASE = 'https://v3.football.api-sports.io';
 
@@ -20,6 +20,11 @@ const FotbalServices = () => {
     return res.response.map(_singlePlayerTransform)
   }
 
+  const getCoach = async (value) => {
+    const res = await request(`${GETBASE}/coachs?team=${value}`)
+    return res.response.map(_coachTransform)
+  }
+
   const getSingleTeam = async (value) => {
     const res = await request(`${GETBASE}/teams?id=${value}`)
     return res.response.map(_singleTeamTransform)
@@ -35,8 +40,13 @@ const FotbalServices = () => {
     return res.response.map(_playerTopTransform)
   }
 
-  const getAllCountries = async () => {
-    const res = await request(`${GETBASE}/leagues`);
+  const getAllCountries = async (value) => {
+    const res = await request(`${GETBASE}/leagues?id=${value}`);
+    return res.response.map(_countriesAllTransform)
+  }
+
+  const getCurrentLeague = async (value) => {
+    const res = await request(`${GETBASE}/leagues?team=${value}`);
     return res.response.map(_countriesAllTransform)
   }
 
@@ -64,6 +74,16 @@ const FotbalServices = () => {
       name: arr.team.name,
       founded: arr.team.founded,
       city: arr.venue.city
+    }
+  }
+
+  const _coachTransform = (arr) => {
+    return {
+      id: arr.id,
+      firstName: arr.firstname,
+      lastname: arr.lastname,
+      age: arr.age,
+      photo: arr.photo
     }
   }
 
@@ -102,7 +122,7 @@ const FotbalServices = () => {
       founded: arr.team.founded,
       capacity: arr.venue.capacity,
       stadium: arr.venue.name,
-      logo: arr.team.logo
+      logo: arr.team.logo,
     }
   }
 
@@ -113,19 +133,7 @@ const FotbalServices = () => {
         return {
           id, name, age, number, position, photo
         }
-
-
       })
-      // arr.players.map((item) => {
-      //   return {
-      //     id: item.id,
-      //     name: item.name,
-      //     age: item.age,
-      //     number: item.number,
-      //     position: item.position,
-      //     photo: item.photo
-      //   }
-      // })
     )
   }
 
@@ -139,7 +147,9 @@ const FotbalServices = () => {
     getSingleTeam,
     getSinglePlayer,
     loading,
-    error
+    error,
+    getCoach,
+    getCurrentLeague
   }
 }
 export default FotbalServices;

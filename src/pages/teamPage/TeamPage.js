@@ -9,8 +9,6 @@ import Spinner from '../../components/spinner/Spinner';
 import Error from '../../components/error/Error';
 
 
-
-
 const TeamPage = (props) => {
 
   const [inputValue, setInputValue] = useState('');
@@ -21,6 +19,7 @@ const TeamPage = (props) => {
   useEffect(() => {
     onRequestTeam(inputValue)
   }, [inputValue])
+
 
   const addTeam = (value) => {
     setInputValue(value);
@@ -53,7 +52,6 @@ const TeamPage = (props) => {
       <div className='content'>
         <Navigation />
         <div className="content__wrapper">
-
           {err}
           {spiner}
           {content}
@@ -61,5 +59,6 @@ const TeamPage = (props) => {
       </div>
     </>
   )
+
 }
 export default TeamPage;
