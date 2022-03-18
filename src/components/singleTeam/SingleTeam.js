@@ -108,17 +108,14 @@ const SingleTeam = (props) => {
       return (
         item.id
       )
-    })
+    })[0]
     return res
   }
-
-  console.log(standingsId(props.leagues));
-
 
   return (
     <div className="singleTeam">
       {ViewTop(props.team)}
-      <Link to={`/standings/${standingsId(props.leagues)}`} className="singleTeam__standings">Standings</Link>
+      <Link to={`/standings/${standingsId(props.leagues)}`} className="singleTeam__standings">View Standings</Link>
       <div className="singleTeam__bottom">
         <h3 className="singleTeam__bottom-title">
           Roster

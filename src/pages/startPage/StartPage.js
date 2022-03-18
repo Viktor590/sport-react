@@ -24,8 +24,6 @@ const StartPage = () => {
 
 
   useEffect(() => {
-    console.log(selectLiga);
-    console.log(selectSeason);
     onRequest(selectLiga, selectSeason);
   }, [selectLiga, selectSeason])
 
@@ -64,9 +62,7 @@ const StartPage = () => {
   }
 
   const err = error ? <Error /> : null;
-
   const spiner = loading ? <Spinner /> : null;
-
   const content = !loading && !error ?
     <>
       <SelectLigue
@@ -79,8 +75,6 @@ const StartPage = () => {
         <PlayerCard players={data} />
       </List>
     </> : null;
-
-
 
   return (
     <>

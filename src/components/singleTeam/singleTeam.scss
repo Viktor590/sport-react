@@ -1,6 +1,18 @@
 .singleTeam {
   margin: 30px 60px 0;
 
+  &__standings {
+    font-size: 20px;
+    color: #000;
+    border-bottom: 1px solid #000;
+    transition: .3s;
+
+    &:hover {
+      color: red;
+      border-color: red;
+    }
+  }
+
   &__top {
     padding: 20px;
     margin-bottom: 24px;
@@ -64,6 +76,7 @@
     border-radius: 10px;
     max-height: 400px;
     overflow-y: auto;
+    margin-top: 15px;
 
     &-link {
       display: contents;

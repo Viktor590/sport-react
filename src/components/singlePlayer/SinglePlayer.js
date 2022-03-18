@@ -6,7 +6,6 @@ const SinglePlayer = (props) => {
 
   const View = (props) => {
     const res = props.map((item) => {
-      console.log(item);
       return (
         <div className="singlePlayer">
           <div className="singlePlayer__img-wrapper" >

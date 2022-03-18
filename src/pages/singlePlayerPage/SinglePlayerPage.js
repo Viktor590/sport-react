@@ -16,7 +16,6 @@ const SinglePlayerPage = () => {
   const [data, setdata] = useState([]);
 
   useEffect(() => {
-    console.log(playerId);
     getSinglePlayer(playerId)
       .then(onPlayerLoaded)
   }, [playerId])
@@ -26,9 +25,7 @@ const SinglePlayerPage = () => {
   }
 
   const err = error ? <Error /> : null;
-
   const spiner = loading ? <Spinner /> : null;
-
   const content = !loading && !error ? <SinglePlayer player={data} /> : null
 
   return (

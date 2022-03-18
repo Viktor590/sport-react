@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import ContentList from "../../components/contentList/ContentList";
 import Header from '../../components/header/Header';
 import List from '../../components/list/List';
 import Navigation from '../../components/navigation/Navigation';
@@ -36,12 +35,11 @@ const PlayerPage = () => {
   }
 
   const err = error ? <Error /> : null;
-
   const spiner = loading ? <Spinner /> : null;
-
   const content = !loading && !error ?
     <>
-      <Search onAdd={addPlayer} />
+      <Search
+        onAdd={addPlayer} />
       <List>
         <PlayerCard players={data} />
       </List>

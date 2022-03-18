@@ -3,7 +3,6 @@ import searchSvg from '../../resources/img/search.svg';
 import './search.scss';
 
 const Search = (props) => {
-
   const [inputValue, setInputValue] = useState('')
 
   const onSubmit = (e) => {
@@ -16,7 +15,7 @@ const Search = (props) => {
       <input
         className='search'
         type="text"
-        placeholder='Search...'
+        placeholder='Search Team'
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       />

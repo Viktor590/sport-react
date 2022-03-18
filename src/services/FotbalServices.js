@@ -41,7 +41,7 @@ const FotbalServices = () => {
   }
 
   const getAllCountries = async (value) => {
-    const res = await request(`${GETBASE}/leagues?id=${value}`);
+    const res = await request(`${GETBASE}/leagues`);
     return res.response.map(_countriesAllTransform)
   }
 
